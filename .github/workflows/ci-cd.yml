@@ -1,0 +1,3 @@
+- name: Run Code Quality Check
+  run: |
+    flake8 .
