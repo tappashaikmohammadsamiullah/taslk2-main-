@@ -1,12 +1,11 @@
-from flask import Flask
+from app import app
 
-app = Flask(__name__)
+def test_home():
+    client = app.test_client()
+    response = client.get("/")
+    assert response.status_code == 200
 
-
-@app.route("/")
-def home():
-    return "Hello, CI/CD Pipeline!"
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
+def test_health():
+    client = app.test_client()
+    response = client.get("/health")
+    assert response.status_code == 200
